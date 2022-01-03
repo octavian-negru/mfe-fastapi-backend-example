@@ -32,18 +32,15 @@ uvicorn app.main:app --reload
 
 ## Run with docker
 
-### Run server
+### Build
 
 ```
-docker-compose up -d --build
+docker-compose build
 ```
-
-### Run test
-
+### Start
 ```
-docker-compose exec app pytest test/test.py
+docker-compose up
 ```
-
 ## API documentation (provided by Swagger UI)
 
 ```
