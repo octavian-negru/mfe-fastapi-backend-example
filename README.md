@@ -1,6 +1,10 @@
 # fastapi-example 
 
-A simple example of using Fast API in Python.
+A simple backend example of using Fast API in Python.
+To be used with 
+- https://github.com/sroy-eq/mfe-host-container
+- https://github.com/sroy-eq/mfe-remote-cats
+- https://github.com/sroy-eq/mfe-remote-dogs
 
 ## Preconditions:
 
@@ -9,7 +13,7 @@ A simple example of using Fast API in Python.
 ## Clone the project
 
 ```
-git clone https://github.com/octavian-negru/fastapi-example.git
+git clone https://github.com/octavian-negru/mfe-fastapi-backend-example.git
 ```
 
 ## Run local
@@ -24,12 +28,6 @@ pip install -r requirements.txt
 
 ```
 uvicorn app.main:app --reload
-```
-
-### Run test
-
-```
-pytest app/test.py
 ```
 
 ## Run with docker
