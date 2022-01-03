@@ -1,4 +1,4 @@
-# fastapi-example [![CircleCI](https://circleci.com/gh/marciovrl/fastapi-example.svg?style=svg)](https://circleci.com/gh/marciovrl/fastapi-example)
+# fastapi-example 
 
 A simple example of using Fast API in Python.
 
@@ -9,7 +9,7 @@ A simple example of using Fast API in Python.
 ## Clone the project
 
 ```
-git clone https://github.com/marciovrl/fastapi-example.git
+git clone https://github.com/octavian-negru/fastapi-example.git
 ```
 
 ## Run local
@@ -50,10 +50,4 @@ docker-compose exec app pytest test/test.py
 
 ```
 http://127.0.0.1:8000/docs
-```
-
-### Run server
-
-```
-docker-compose exec db psql --username=fastapi --dbname=fastapi_dev
 ```
