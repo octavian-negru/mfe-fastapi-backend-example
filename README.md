@@ -1,4 +1,4 @@
-# fastapi-example 
+# mfe-fastapi-backend-example 
 
 A simple backend example of using Fast API in Python.
 To be used with 
