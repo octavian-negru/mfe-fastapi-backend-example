@@ -1,10 +1,21 @@
-from fastapi import FastAPI, HTTPException
-from starlette.responses import Response
+import io
 
-from app.db.models import UserAnswer
-from app.api import api
+import requests
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import StreamingResponse
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -12,33 +23,13 @@ def root():
     return {"message": "Fast API in Python"}
 
 
-@app.get("/user")
-def read_user():
-    return api.read_user()
+@app.get("/random_cat")
+def random_cat():
+    cat_response = requests.get("https://aws.random.cat/meow")
+    return StreamingResponse(io.BytesIO(cat_response.content), media_type="image/jpg")
 
 
-@app.get("/question/{position}", status_code=200)
-def read_questions(position: int, response: Response):
-    question = api.read_questions(position)
-
-    if not question:
-        raise HTTPException(status_code=400, detail="Error")
-
-    return question
-
-
-@app.get("/alternatives/{question_id}")
-def read_alternatives(question_id: int):
-    return api.read_alternatives(question_id)
-
-
-@app.post("/answer", status_code=201)
-def create_answer(payload: UserAnswer):
-    payload = payload.dict()
-
-    return api.create_answer(payload)
-
-
-@app.get("/result/{user_id}")
-def read_result(user_id: int):
-    return api.read_result(user_id)
+@app.get("/random_dog")
+def random_dog():
+    dog_response = requests.get("https://dog.ceo/api/breeds/image/random")
+    return StreamingResponse(io.BytesIO(dog_response.content), media_type="image/jpg")
